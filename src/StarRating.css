@@ -1,3 +1,4 @@
 .star-rating-container {
     display: flex;
+    cursor: pointer;
 }
