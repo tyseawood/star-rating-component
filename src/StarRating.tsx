@@ -21,7 +21,7 @@ const StarRating: React.FC = () => {
                    return (
                        <p
                            key={idx}
-                           className={` star ${ratingValue <= hoveredRating ? 'active' : ''} `}
+                           className={` star ${ratingValue <= (hoveredRating || currentRating) ? 'active' : ''} `}
                            onClick={() => setCurrentRatingClickHandler(ratingValue)}
                            onMouseEnter={() => setHoveredRating(ratingValue)}
                            onMouseLeave={() => setHoveredRating(0)}
