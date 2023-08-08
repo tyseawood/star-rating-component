@@ -1,11 +1,14 @@
-import './App.css'
+import { useState} from "react";
 import StarRating from "./StarRating.tsx";
-function App() {
+import './App.css'
 
+function App() {
+    const [productRating, setProductRating] = useState(0)
   return (
       <>
-          <main>
-              <StarRating maxRating={5}/>
+          <main className={'app'}>
+              Current Product Rating: {productRating}
+              <StarRating maxRating={5} onChange={setProductRating}/>
           </main>
       </>
   )

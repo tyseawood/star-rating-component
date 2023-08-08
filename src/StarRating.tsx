@@ -1,10 +1,11 @@
-import React, { useState, useCallback} from "react";
+import React, { useState, useCallback, useEffect} from "react";
 import './StarRating.css'
 
-type StarProps = {
+interface StarProps {
     maxRating: number
+    onChange: (number: number) => void
 }
-const StarRating: React.FC<StarProps> = ({maxRating = 5}:{ maxRating: number }) => {
+const StarRating: React.FC<StarProps> = ({maxRating = 5, onChange = () => {}}) => {
     const [currentRating, setCurrentRating] = useState(0)
     const [hoveredRating, setHoveredRating] = useState(0)
 
@@ -14,9 +15,12 @@ const StarRating: React.FC<StarProps> = ({maxRating = 5}:{ maxRating: number }) 
             : setCurrentRating(ratingValue)
     }, [currentRating])
 
+    useEffect(() => {
+        onChange(currentRating)
+    }, [currentRating, onChange])
+
     return (
         <div className={"star-rating-container"}>
-            current rating: { currentRating }
             {
 
                [...Array(maxRating)].map((_, idx) => {
@@ -29,7 +33,7 @@ const StarRating: React.FC<StarProps> = ({maxRating = 5}:{ maxRating: number }) 
                            onMouseEnter={() => setHoveredRating(ratingValue)}
                            onMouseLeave={() => setHoveredRating(0)}
                        >
-                           {ratingValue}
+                           &#9733;
                        </p>
                    )})
             }
