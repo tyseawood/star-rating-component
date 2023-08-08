@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback} from "react";
 import './StarRating.css'
 
 type StarProps = {
@@ -8,11 +8,11 @@ const StarRating: React.FC<StarProps> = ({maxRating = 5}:{ maxRating: number }) 
     const [currentRating, setCurrentRating] = useState(0)
     const [hoveredRating, setHoveredRating] = useState(0)
 
-    const setCurrentRatingClickHandler = (ratingValue: number) => {
+    const setCurrentRatingClickHandler = useCallback((ratingValue: number) => {
         currentRating === ratingValue
             ? setCurrentRating(0)
             : setCurrentRating(ratingValue)
-    }
+    }, [currentRating])
 
     return (
         <div className={"star-rating-container"}>
