@@ -2,3 +2,9 @@
     display: flex;
     cursor: pointer;
 }
+.star {
+    font-size: 40px;
+}
+.star.active {
+    color: red;
+}
