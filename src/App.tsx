@@ -15,7 +15,7 @@ function App() {
   return (
       <>
           <main>
-              <StarRating />
+              <StarRating maxRating={10}/>
           </main>
       </>
   )

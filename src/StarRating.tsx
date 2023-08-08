@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import './StarRating.css'
-const StarRating: React.FC = () => {
-    // const maxRating = 5
+
+type StarProps = {
+    maxRating: number
+}
+const StarRating: React.FC<StarProps> = ({maxRating = 5}:{ maxRating: number }) => {
     const [currentRating, setCurrentRating] = useState(0)
     const [hoveredRating, setHoveredRating] = useState(0)
 
@@ -16,7 +19,7 @@ const StarRating: React.FC = () => {
             current rating: { currentRating }
             {
 
-               [...Array(5)].map((_, idx) => {
+               [...Array(maxRating)].map((_, idx) => {
                    const ratingValue  = idx + 1
                    return (
                        <p
